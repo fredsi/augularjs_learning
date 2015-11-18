@@ -1,0 +1,37 @@
+body
+{
+	margin: auto;
+	text-align: center;
+	width: 30%
+}
+ul
+{
+	list-style: none;
+}
+.font-checked
+{
+	color: #C1CDCD;
+	text-decoration: line-through;
+}
+.font-active
+{
+	color: #66CD00;
+	font-weight: bold;
+}
+.font-warning
+{
+	color: #949494;
+}
+.font-footer
+{
+	font-size: 88%;
+	font-weight: bold;
+}
+.remove-top
+{
+	top: 0px;
+}
+.cursor-in
+{
+	cursor: pointer;
+}

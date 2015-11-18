@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+	<head>
+		<title>todoMVC</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/todomvc.css" rel="stylesheet">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/lib/angular.js"></script>
+		<script src="js/controllers/controller.js"></script>
+		<script src="js/services/storage.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+	</head>
+	<body class="text-center">
+		<div class="page-header">
+			<h1>todos</h1>
+		</div>			
+		<div ng-controller="todoController">
+			<ul>
+				<li class="input-group">
+					<span class="input-group-addon">
+						<input type="checkbox" ng-model="wholeStatus" ng-click="changeAllStatus()"/>
+					</span>
+					<input placeholder="What needs to be done?" class="form-control input" ng-model="newTask" ng-keyup="addTask($event)" autofocus/>
+				</li>
+				<li ng-repeat="item in showItems track by $index" class="input-group">
+					<span class="input-group-addon">
+       					<input type="checkbox" ng-model="item.status"/>
+       				</span>
+      				<input class="form-control" ng-class="{'font-checked':!item.status?false:(item.status && $index != currentIndex)}" ng-dblclick="changeEditable($event.target, item)" ng-blur="editTask($event, item, 'blur')" ng-keyup="editTask($event, item, 'keyup')" ng-model="item.task" ng-readonly="$index != currentIndex"/>
+      				<span class="input-group-addon glyphicon glyphicon-remove remove-top" ng-click="removeTask(item)"></span>
+				</li>
+				<li class="row font-footer" ng-show="show">
+					<label class="col-md-3">{{activeCount}} items left</label>
+					<a class="col-md-1 cursor-in" ng-class="{'font-active':markLabel=='All'}" ng-click="showTasks('All')">All</a>
+					<a class="col-md-2 cursor-in" ng-class="{'font-active':markLabel=='Active'}" ng-click="showTasks('Active')">Active</a>
+					<a class="col-md-2 cursor-in" ng-class="{'font-active':markLabel=='Completed'}" ng-click="showTasks('Completed')">Completed&nbsp;</a>
+					<a class="col-md-4 cursor-in font-warning" ng-show="showClear" ng-click="clearCompleted()">Clear-completed</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
