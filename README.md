@@ -1,3 +1,3 @@
 # learningit
 # training project todoWVC
-# just a test
+# A practice to begin to learn AngularJs
